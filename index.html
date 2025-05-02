@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Karakter Cocomelon dan Teman-Temannya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e6f4f1;
+            color: #2b3a42;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            background-color: #2c786c;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 28px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            flex: 1;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .menu, .menu-right {
+            background-color: #368f8b;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .menu h3, .menu-right h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 18px;
+        }
+
+        .menu a, .menu-right a {
+            display: block;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: #e0f7f4;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .menu a:hover, .menu-right a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .content {
+            background-color: #cdeae1;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .content img {
+            width: 250px;
+            max-width: 100%;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .description {
+            margin-top: 20px;
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #2c786c;
+            color: #d7f5f3;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+        }
+
+        .back-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #275d52;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #1e4b41;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .menu, .menu-right {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Karakter Cocomelon dan Teman-Temannya</h1>
+
+    <div class="container">
+        <nav class="menu">
+            <h3>Karakter Utama</h3>
+            <a href="#" onclick="showContent('JJ')">JJ</a>
+            <a href="#" onclick="showContent('TomTom')">TomTom</a>
+            <a href="#" onclick="showContent('YoYo')">YoYo</a>
+        </nav>
+
+        <main class="content" id="content">
+            <h2>Selamat Datang!</h2>
+            <img src="teman.jpeg" alt="Selamat Datang">
+            <p>Klik karakter di samping untuk melihat karakter lainnya.</p>
+        </main>
+
+        <nav class="menu-right">
+            <h3>Karakter Lain</h3>
+            <a href="#" onclick="showContent('Cody')">Cody</a>
+            <a href="#" onclick="showContent('Nina')">Nina</a>
+            <a href="#" onclick="showContent('Bella')">Bella</a>
+        </nav>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Dunia Cocomelon</p>
+        <p>BELA RISKA HARYANTI-6304230057 TEKNIK INFORMATIKA 2023</p>
+        <button class="back-button" onclick="goToHome()">Kembali ke Utama</button>
+    </footer>
+
+    <script>
+        function showContent(char) {
+            const content = document.getElementById('content');
+            const data = {
+                'JJ': {
+                    img: 'jj.jpg',
+                    desc: 'JJ adalah karakter utama dalam Cocomelon, bayi lucu yang selalu ingin tahu tentang dunia di sekitarnya.'
+                },
+                'TomTom': {
+                    img: 'tomtom.jpeg',
+                    desc: 'TomTom adalah kakak laki-laki JJ yang energik dan suka bertualang.'
+                },
+                'YoYo': {
+                    img: 'yoyo.jpeg',
+                    desc: 'YoYo adalah kakak perempuan JJ yang pintar dan suka berimajinasi.'
+                },
+                'Cody': {
+                    img: 'Codyy.jpeg',
+                    desc: 'Cody adalah teman terbaik JJ yang menyukai dinosaurus dan suka bermain di luar ruangan.'
+                },
+                'Nina': {
+                    img: 'nina.jpeg',
+                    desc: 'Nina adalah teman yang ceria, penuh ide kreatif, dan suka berpetualang bersama JJ.'
+                },
+                'Bella': {
+                    img: 'bella.jpeg',
+                    desc: 'Bella adalah teman JJ yang lembut dan penyayang, suka berbagi keceriaan dengan teman-temannya.'
+                }
+            };
+
+            if (data[char]) {
+                content.innerHTML = `
+                    <h2>${char}</h2>
+                    <img src="${data[char].img}" alt="${char}">
+                    <div class="description">
+                        <p>${data[char].desc}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function goToHome() {
+            document.getElementById('content').innerHTML = `
+                <h2>Selamat Datang!</h2>
+                <img src="Teman-teman.jpeg" alt="Selamat Datang">
+                <p>Ini adalah karakter Cocomelon dan teman-temannya.</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
